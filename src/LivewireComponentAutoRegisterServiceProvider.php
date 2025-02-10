@@ -2,12 +2,11 @@
 
 namespace Soyhuce\LivewireComponentAutoRegister;
 
-use Illuminate\Support\ServiceProvider;
+use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentAutoRegisterCacheCommand;
 use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentAutoRegisterClearCacheCommand;
 use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentIdeHelperCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentAutoRegisterCacheCommand;
 
 class LivewireComponentAutoRegisterServiceProvider extends PackageServiceProvider
 {
@@ -23,13 +22,13 @@ class LivewireComponentAutoRegisterServiceProvider extends PackageServiceProvide
             ->hasConfigFile()
             ->hasViews()
             ->hasCommand(LivewireComponentAutoRegisterCacheCommand::class)
-        ->hasCommand(LivewireComponentAutoRegisterClearCacheCommand::class)
-        ->hasCommand(LivewireComponentIdeHelperCommand::class);
+            ->hasCommand(LivewireComponentAutoRegisterClearCacheCommand::class)
+            ->hasCommand(LivewireComponentIdeHelperCommand::class);
     }
 
     public function packageBooted(): void
     {
-        if($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole()) {
             $this->optimizes(
                 LivewireComponentAutoRegisterCacheCommand::class,
                 LivewireComponentAutoRegisterClearCacheCommand::class,
