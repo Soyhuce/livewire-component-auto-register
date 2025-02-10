@@ -35,7 +35,7 @@ class ComponentRegistrar
     /**
      * @return array<class-string, string>
      */
-    private function getComponents(): array
+    public function getComponents(): array
     {
         if (file_exists(base_path('bootstrap/cache/livewire-components-auto-register.php'))) {
             return require base_path('bootstrap/cache/livewire-components-auto-register.php');

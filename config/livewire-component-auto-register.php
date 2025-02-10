@@ -7,4 +7,10 @@ return [
        // 'Support\\' => base_path('app/Support/Components'),
     ],
 
+
+    'ide-helper' => [
+        'scan-path' => base_path('app'),
+        'file' => base_path('ide-helper/livewire-components.php'),
+    ]
+
 ];

@@ -4,6 +4,7 @@ namespace Soyhuce\LivewireComponentAutoRegister;
 
 use Illuminate\Support\ServiceProvider;
 use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentAutoRegisterClearCacheCommand;
+use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentIdeHelperCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentAutoRegisterCacheCommand;
@@ -21,17 +22,21 @@ class LivewireComponentAutoRegisterServiceProvider extends PackageServiceProvide
             ->name('livewire-component-auto-register')
             ->hasConfigFile()
             ->hasViews()
-            ->hasCommand(LivewireComponentAutoRegisterCacheCommand::class);
-
-        $this->optimizes(
-            LivewireComponentAutoRegisterCacheCommand::class,
-            LivewireComponentAutoRegisterClearCacheCommand::class,
-            'livewire components auto-register'
-        );
+            ->hasCommand(LivewireComponentAutoRegisterCacheCommand::class)
+        ->hasCommand(LivewireComponentAutoRegisterClearCacheCommand::class)
+        ->hasCommand(LivewireComponentIdeHelperCommand::class);
     }
 
     public function packageBooted(): void
     {
+        if($this->app->runningInConsole()) {
+            $this->optimizes(
+                LivewireComponentAutoRegisterCacheCommand::class,
+                LivewireComponentAutoRegisterClearCacheCommand::class,
+                'livewire components auto-register'
+            );
+        }
+
         new ComponentRegistrar()->register();
     }
 }
