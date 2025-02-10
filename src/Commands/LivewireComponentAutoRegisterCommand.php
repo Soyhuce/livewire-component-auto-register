@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace VendorName\Skeleton\Commands;
+namespace Soyhuce\LivewireComponentAutoRegister\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LivewireComponentAutoRegisterCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'livewire-component-auto-register';
 
     public $description = 'My command';
 

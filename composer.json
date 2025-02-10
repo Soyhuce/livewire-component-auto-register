@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "soyhuce/livewire-component-auto-register",
+    "description": "Auto-register Livewire components outside base namespace",
     "keywords": [
-        ":vendor_name",
+        "soyhuce",
         "laravel",
-        ":package_slug"
+        "livewire-component-auto-register"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/soyhuce/livewire-component-auto-register",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Bastien Philippe",
+            "email": "bastien.philippe@soyhuce.fr",
             "role": "Developer"
         }
     ],
@@ -33,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Soyhuce\\LivewireComponentAutoRegister\\": "src/",
+            "Soyhuce\\LivewireComponentAutoRegister\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Soyhuce\\LivewireComponentAutoRegister\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -66,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Soyhuce\\LivewireComponentAutoRegister\\LivewireComponentAutoRegisterServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LivewireComponentAutoRegister": "Soyhuce\\LivewireComponentAutoRegister\\Facades\\LivewireComponentAutoRegister"
             }
         }
     },

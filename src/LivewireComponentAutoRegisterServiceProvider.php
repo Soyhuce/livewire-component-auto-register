@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace VendorName\Skeleton;
+namespace Soyhuce\LivewireComponentAutoRegister;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use Soyhuce\LivewireComponentAutoRegister\Commands\LivewireComponentAutoRegisterCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LivewireComponentAutoRegisterServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('livewire-component-auto-register')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_livewire_component_auto_register_table')
+            ->hasCommand(LivewireComponentAutoRegisterCommand::class);
     }
 }
