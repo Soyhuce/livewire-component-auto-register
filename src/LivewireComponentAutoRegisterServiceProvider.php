@@ -19,7 +19,11 @@ class LivewireComponentAutoRegisterServiceProvider extends PackageServiceProvide
             ->name('livewire-component-auto-register')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_livewire_component_auto_register_table')
             ->hasCommand(LivewireComponentAutoRegisterCommand::class);
+    }
+
+    public function packageBooted(): void
+    {
+        new ComponentRegistrar()->register();
     }
 }

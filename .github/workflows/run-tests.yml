@@ -18,15 +18,11 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [8.4, 8.3]
-        laravel: [11.*, 10.*]
+        laravel: [11.*]
         stability: [prefer-lowest, prefer-stable]
         include:
           - laravel: 11.*
             testbench: 9.*
-            carbon: ^2.63
-          - laravel: 10.*
-            testbench: 8.*
-            carbon: ^2.63
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -48,7 +44,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.os == 'windows-latest' && '^^^' || '' }}${{ matrix.carbon }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: List Installed Dependencies

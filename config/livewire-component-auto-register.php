@@ -1,5 +1,10 @@
 <?php declare(strict_types=1);
 
-// config for Soyhuce/LivewireComponentAutoRegister
+
 return [
+
+    'paths'=>[
+       // 'Support\\' => base_path('app/Support/Components'),
+    ],
+
 ];

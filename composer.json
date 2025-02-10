@@ -17,14 +17,16 @@
     ],
     "require": {
         "php": "^8.4",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0"
+        "composer/class-map-generator": "^1.5.0",
+        "illuminate/contracts": "^11.0",
+        "livewire/livewire": "^3.5",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.",
-        "nunomaduro/collision": "^8.1.1||^7.10.0",
+        "nunomaduro/collision": "^8.1.1",
         "larastan/larastan": "^3.0",
-        "orchestra/testbench": "^9.0.0||^8.22.0",
+        "orchestra/testbench": "^9.0.0",
         "pestphp/pest": "^3.0",
         "pestphp/pest-plugin-arch": "^3.0",
         "pestphp/pest-plugin-laravel": "^3.0",
@@ -33,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Soyhuce\\LivewireComponentAutoRegister\\": "src/",
-            "Soyhuce\\LivewireComponentAutoRegister\\Database\\Factories\\": "database/factories/"
+            "Soyhuce\\LivewireComponentAutoRegister\\": "src/"
         }
     },
     "autoload-dev": {
@@ -67,10 +68,7 @@
         "laravel": {
             "providers": [
                 "Soyhuce\\LivewireComponentAutoRegister\\LivewireComponentAutoRegisterServiceProvider"
-            ],
-            "aliases": {
-                "LivewireComponentAutoRegister": "Soyhuce\\LivewireComponentAutoRegister\\Facades\\LivewireComponentAutoRegister"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
