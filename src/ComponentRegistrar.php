@@ -17,6 +17,21 @@ class ComponentRegistrar
         }
     }
 
+    public function cache(): void
+    {
+        file_put_contents(
+            base_path('bootstrap/cache/livewire-components-auto-register.php'),
+            '<?php return ' . var_export($this->resolveComponents(), true) . ';'
+        );
+    }
+
+    public function clearCache(): void
+    {
+        if (file_exists(base_path('bootstrap/cache/livewire-components-auto-register.php'))) {
+            unlink(base_path('bootstrap/cache/livewire-components-auto-register.php'));
+        }
+    }
+
     /**
      * @return array<class-string, string>
      */
