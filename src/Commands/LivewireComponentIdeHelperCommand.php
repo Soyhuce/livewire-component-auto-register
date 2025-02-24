@@ -39,10 +39,12 @@ class LivewireComponentIdeHelperCommand extends Command
      */
     protected function getComponents(): array
     {
-        return [
+        return new Collection([
             ...$this->livewireComponents(),
             ...new ComponentRegistrar()->getComponents(),
-        ];
+        ])
+            ->sort()
+            ->all();
     }
 
     /**
