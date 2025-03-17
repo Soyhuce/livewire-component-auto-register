@@ -6,7 +6,9 @@
 [![GitHub PHPStan Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/livewire-component-auto-register/phpstan.yml?branch=main&label=phpstan)](https://github.com/soyhuce/livewire-component-auto-register/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/livewire-component-auto-register.svg?style=flat-square)](https://packagist.org/packages/soyhuce/livewire-component-auto-register)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Auto-register Livewire components outside base namespace
+
+Livewire only supports having one root namespace for your components. This package allows you to automatically register components outside the base namespace.
 
 ## Installation
 
@@ -16,38 +18,53 @@ You can install the package via composer:
 composer require soyhuce/livewire-component-auto-register
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="livewire-component-auto-register-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="livewire-component-auto-register-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="livewire-component-auto-register-views"
-```
-
 ## Usage
 
+In the `config/livewire-component-auto-register.php` file, you can specify the namespaces you want to register components from.
+
 ```php
-$livewireComponentAutoRegister = new Soyhuce\LivewireComponentAutoRegister();
-echo $livewireComponentAutoRegister->echoPhrase('Hello, Soyhuce!');
+    'paths' => [
+        'Support\\Livewire' => base_path('app/Support/Livewire'),
+    ],
 ```
+
+From now, all components in the `app/Support/Livewire` namespace will be automatically registered and be usable in your views.
+For example, if you have a component `app/Support/Livewire/ProgressBar.php`, you can use it in your views like this:
+```bladehtml
+<livewire:progress-bar />
+```
+
+### Optimize discovery for production
+
+Component discovery can be cached using the `livewire-component-auto-register:cache` command.
+
+```bash
+php artisan livewire-component-auto-register:cache
+```
+
+Cache can be cleared using the `livewire-component-auto-register:clear` command.
+
+```bash
+php artisan livewire-component-auto-register:clear
+```
+
+Commands are registered as optimization command inside Laravel, meaning that `php artisan optimize` and `php artisan optimize:clear` will automatically run them.
+
+### Generate IDE Helper file
+
+Sometimes, your IDE may not be able to resolve the components correctly (particularly Laravel IDEA plugin). You can generate a helper file using the `livewire-component-auto-register:ide-helper` command.
+
+```bash
+php artisan livewire-component-auto-register:ide-helper
+```
+
+You can configure ide-helper file path in the configuration file.
 
 ## Testing
 

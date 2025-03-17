@@ -12,7 +12,7 @@ use Soyhuce\LivewireComponentAutoRegister\ComponentRegistrar;
 
 class LivewireComponentIdeHelperCommand extends Command
 {
-    public $signature = 'livewire-component:ide-helper';
+    public $signature = 'livewire-component-auto-register:ide-helper';
 
     public $description = 'Generate an IDE helper file to help Laravel idea to find and auto-complete the components';
 
