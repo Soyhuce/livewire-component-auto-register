@@ -2,6 +2,14 @@
 
 All notable changes to `livewire-component-auto-register` will be documented in this file.
 
+## 0.3.0 - 2025-03-17
+
+### What's Changed
+
+* Add doc, rename ide-helper command by @bastien-phi in https://github.com/Soyhuce/livewire-component-auto-register/pull/5
+
+**Full Changelog**: https://github.com/Soyhuce/livewire-component-auto-register/compare/0.2.0...0.3.0
+
 ## 0.2.0 - 2025-02-24
 
 ### What's Changed
